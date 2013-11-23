@@ -13,7 +13,7 @@ This project is set to work on your local machine using express.js server and a 
 
 #### How To Install
 
-Make sure you have npm, node and mongoDB installed:
+Make sure you have npm, node and MongoDB installed:
 
 ```bash
 node - v
@@ -21,8 +21,9 @@ npm - v
 mongo --version
 ```
 
-If you need to install node or npm follow [these steps](https://gist.github.com/isaacs/579814)
-If you need to install MongoDB run the following:
+If you need to install node or npm follow [these steps](https://gist.github.com/isaacs/579814).
+
+If you need to install MmongoDB run the following:
 
 ```bash
 brew update
@@ -35,7 +36,7 @@ Start your MongoDB by running:
 mongod
 ```
 
-Now, we are ready to install the app dependencies by running the following at the parent directory of you app:
+Now, we are ready to install the app dependencies by running the following at the parent directory of your app:
 
 ```bash
 npm install
