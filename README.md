@@ -52,7 +52,7 @@ Run grunt dist
 grunt dist
 ```
 
-This will creates the app minified js and css files.
+This will create the app minified js and css files.
 
 Now start the app by running:
 
