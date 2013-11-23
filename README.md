@@ -23,7 +23,7 @@ mongo --version
 
 If you need to install node or npm follow [these steps](https://gist.github.com/isaacs/579814).
 
-If you need to install MmongoDB run the following:
+If you need to install MongoDB run the following:
 
 ```bash
 brew update
