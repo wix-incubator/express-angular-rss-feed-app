@@ -13,7 +13,7 @@ This project is set to work on your local machine using express.js server and a 
 
 #### How To Install
 
-Make sure you have npm, node and mongoDB install:
+Make sure you have npm, node and mongoDB installed:
 
 ```bash
 node - v
