@@ -1,0 +1,4 @@
+{
+    "url"        : "mydb",
+    "collections": ["settings"]
+}
