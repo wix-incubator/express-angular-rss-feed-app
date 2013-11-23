@@ -1,0 +1,81 @@
+body, html {
+    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body.widget a {
+    text-decoration: none;
+    color: #444;
+}
+
+body.widget li {
+    list-style: none;
+}
+
+body.widget .main-title {
+    text-align: center;
+    margin:0;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body.widget .feed {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+}
+
+body.widget .widget-body {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    overflow: hidden;
+    height: 100%;
+    vertical-align: middle;
+}
+
+body.widget .widget-header {
+    overflow: hidden;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+body.widget .feed-container {
+    box-shadow: #888 0 0 10px;
+    border: 1px solid #fff;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 10px;
+}
+
+body.widget .overview{
+    overflow-y: auto;
+    position: relative !important;
+}
+
+body.widget .feed:hover {
+    background: #fff;
+    opacity: 0.5;
+    box-shadow: #ddd 0 0 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-bottom-color: transparent;
+}
+
+body.widget .feed .title {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight:bold;
+}
+
+body.widget .feed .content p {
+    font-size: 12px;
+    line-height: 18px;
+    font-style: italic;
+}

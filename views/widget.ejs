@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="rss" ng-controller="WidgetCtrl" data-ng-init="init()">
+<head>
+    <title>Widget &bull; Wix</title>
+    <link type="text/css" href="/dist/rss-app.min.css" rel="stylesheet">
+    <style wix-style type="text/css">
+        #widget-body{
+            background-color: {{style.bgColor white/black}}
+        }
+
+        .main-title{
+            color: {{style.titleColor black/white}}
+        }
+
+        #feedEntries{
+            background-color: {{style.bgFeedColor color-1}}
+        }
+
+        .feed *{
+            color: {{style.textColor color-5}}
+        }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-resource.min.js"></script>
+    <script src="/dist/rss-app.min.js"></script>
+</head>
+<body class="widget">
+<div id="widget-body" class="flexcroll">
+    <div class="widget-header">
+        <div class="main-title" ng-bind="title"></div>
+    </div>
+    <div class="overview">
+        <div class="feed-container" id="feedEntries">
+            <ul class="unstyled">
+                <li ng-repeat="feed in feeds">
+                    <a target="_blank" href="{{feed.link}}">
+                        <div class="feed">
+                            <div class="title">{{feed.title}}</div>
+                            <div class="content"><p>{{feed.contentSnippet}}</p></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var settings = <%- settings %>;
+</script>
+<script type="text/javascript" src="http://sslstatic.wix.com/services/js-sdk/1.24.0/js/Wix.js"></script>
+</body>
+</html>
