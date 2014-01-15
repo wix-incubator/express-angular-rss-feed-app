@@ -1,7 +1,8 @@
+[![Build Status](https://travis-ci.org/wix/express-angular-rss-feed-app.png?branch=master)](https://travis-ci.org/wix/express-angular-rss-feed-app)
+
 # RSS Feed App - (Node.js, MongoDB, Angular.js, Karma and Grunt)
 
-[![Build Status](https://travis-ci.org/wix/express-angular-rss-feed-app.png?branch=master)](https://travis-ci.org/wix/express-angular-rss-feed-app)
-## About
+### About
 A Wix App, RSS Feed, demonstrating how to build a production ready app. Client & Server from scratch using Node.js server & Wix client side libraries.
 
 ### Intro
