@@ -5,19 +5,21 @@
     <link type="text/css" href="/dist/rss-app.min.css" rel="stylesheet">
     <style wix-style type="text/css">
         #widget-body{
-            background-color: {{style.bgColor white/black}}
+            background-color: {{style.bgColor color-1}};
         }
 
         .main-title{
-            color: {{style.titleColor black/white}}
+            color: {{style.titleColor color-2}};
+            {{style.titleFont Title}};
         }
 
         #feedEntries{
-            background-color: {{style.bgFeedColor color-1}}
+            background-color: {{style.bgFeedColor color-3}};
+            {{style.entriesFont Body-M}};
         }
 
         .feed *{
-            color: {{style.textColor color-5}}
+            color: {{style.textColor color-5}};
         }
     </style>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -48,6 +50,6 @@
 <script type="text/javascript">
     var settings = <%- settings %>;
 </script>
-<script type="text/javascript" src="http://sslstatic.wix.com/services/js-sdk/1.24.0/js/Wix.js"></script>
+<script type="text/javascript" src="http://sslstatic.wix.com/services/js-sdk/1.27.0/js/Wix.js"></script>
 </body>
 </html>

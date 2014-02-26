@@ -1,1 +1,1 @@
-var app = angular.module('rss', ['rss.controllers', 'rss.services']);
+var app = angular.module('rss', ['rss.controllers', 'rss.directives', 'rss.services']);
