@@ -37,7 +37,6 @@ directives.directive('ngNumOfEntries', ['WixService', '$timeout', function (WixS
                 if (value !== '') {
                     scope.$apply(function () {
                         scope.settings.numOfEntries = value;
-                        //ngModel.$setViewValue(value);
                     });
                 }
             });
