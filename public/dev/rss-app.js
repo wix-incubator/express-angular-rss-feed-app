@@ -121,7 +121,7 @@ services.factory('FeedService', ['$http', function ($http) {
 }]);
 
 services.factory('Settings', ['$resource', '$location', function ($resource, $location) {
-    return $resource('/app/settingsupdate?instance=' + ($location.search()).instance + "&compId=:compId");
+    return $resource('/app/settingsupdate?instance=' + $location.search().instance + "&compId=:compId");
 }]);
 
 services.factory("SettingsService", function () {
