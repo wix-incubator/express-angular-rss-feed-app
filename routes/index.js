@@ -33,7 +33,7 @@ exports.settingsupdate = function(req, res){
 function getSettings(req, callback){
     db.settings.findOne({key: req.key}, function(err, result) {
         if( err || !result) {
-            callback({});
+            callback('[]');
         }
         else{
             console.log(result.settings);
