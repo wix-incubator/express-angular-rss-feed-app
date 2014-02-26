@@ -17,8 +17,8 @@ This project is set to work on your local machine using express.js server and a 
 Make sure you have npm, node and MongoDB installed:
 
 ```bash
-node - v
-npm - v
+node -v
+npm -v
 mongo --version
 ```
 
