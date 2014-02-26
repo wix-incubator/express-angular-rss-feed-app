@@ -15,7 +15,7 @@ module.exports = function(config) {
         'tests/angular-mocks.js',
         'public/javascripts/rss.js',
         'public/javascripts/controllers.js',
-		'public/javascripts/directives.js',
+        'public/javascripts/directives.js',
         'public/javascripts/services.js',
         'tests/controllersSpec.js'
     ],
