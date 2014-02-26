@@ -3,10 +3,10 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON("package.json"),
         clean: {
             dev: {
-                src: ['dev']
+                src: ['public/dev']
             },
             dist: {
-                src: ['dist']
+                src: ['public/dist']
             }
         },
         concat: {
