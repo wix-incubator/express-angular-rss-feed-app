@@ -18,17 +18,14 @@ var WidgetCtrl = ['$scope', '$window', 'SettingsService', 'FeedService',
 var SettingsCtrl = ['$scope', '$window', 'SettingsService', 'Settings', 'WixService', 'FeedService',
     function ($scope, $window, SettingsService, Settings, WixService, FeedService) {
         $scope.init = function () {
-            WixService.initialize();
-            $scope.settings = SettingsService.settings($window);
-
-            $scope.applySettings();
+			$scope.settings = SettingsService.settings($window);
+			$scope.applySettings();
             $scope.loadFeedMetaData();
-
         }
 
         $scope.applySettings = function() {
             $scope.$watch('settings.numOfEntries',function(val,old){
-                $scope.settings.numOfEntries = parseInt(val);
+				$scope.settings.numOfEntries = parseInt(val);
                 if (old && val !== old) {
                     $scope.store();
                 }
@@ -37,23 +34,25 @@ var SettingsCtrl = ['$scope', '$window', 'SettingsService', 'Settings', 'WixServ
 
         $scope.loadFeedMetaData = function() {
             if ($scope.settings.connected) {
-                FeedService.parseFeed($scope.settings.feedUrl).then(function (res) {
+				FeedService.parseFeed($scope.settings.feedUrl).then(function (res) {
                     $scope.feed = res.data.responseData.feed;
                 });
             }
         }
 
         $scope.connect = function(shouldConnect){
-            $scope.settings.connected = shouldConnect;
+			$scope.settings.connected = shouldConnect;
             if(shouldConnect) {
                 $scope.loadFeedMetaData();
-            }
-            $scope.store();
+            } else {
+				$scope.settings.feedUrl = 'http://rss.cnn.com/rss/edition.rss';
+			}
+			$scope.store();
         }
 
         $scope.store = function() {
             var compId = WixService.getOrigCompId();
-            Settings.save({"compId": compId}, JSON.stringify({settings: JSON.stringify($scope.settings)}), function success() {
+			Settings.save({"compId": compId}, JSON.stringify({settings: JSON.stringify($scope.settings)}), function success() {
                 WixService.refreshAppByCompIds(compId);
             }, function err() {});
         }

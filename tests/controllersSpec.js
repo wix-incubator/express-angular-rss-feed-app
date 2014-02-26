@@ -33,11 +33,11 @@ describe('WidgetCtrl', function(){
 });
 
 describe('SettingsCtrl', function(){
-    var scope, window, settingsService, settings, wixService, feedService, $httpBackend;
+    var scope, window, settingsService, settings, wixService, feedService, $httpBackend, compile;
 
     beforeEach(module('rss'));
 
-    beforeEach(inject(function($rootScope, $window, _$httpBackend_, $controller, $q, SettingsService, Settings, FeedService){
+    beforeEach(inject(function($rootScope, $window, _$httpBackend_, $controller, $q, $compile, SettingsService, Settings, FeedService){
         scope = $rootScope.$new();
         settingsService = SettingsService;
         settings = Settings;
@@ -46,10 +46,11 @@ describe('SettingsCtrl', function(){
             settings : {'numOfEntries':'4', 'feedUrl':'http://rss.cnn.com/rss/edition.rss', connected : false}
         };
         $httpBackend = _$httpBackend_;
+		compile = $compile;
         var deferred = $q.defer();
         deferred.resolve({'data': {'responseData': {'feed' : {'entries' : [{'someJSONObject' : {}}], 'title' : 'Feed Title'}}}});
         spyOn(feedService, 'parseFeed').andReturn(deferred.promise);
-        wixService = jasmine.createSpyObj('wixService', ['initialize', 'getOrigCompId', 'refreshAppByCompIds']);
+        wixService = jasmine.createSpyObj('wixService', ['initialize', 'getOrigCompId', 'refreshAppByCompIds', 'onChange', 'set']);
 
         $controller('SettingsCtrl', {$scope: scope, $window: window, SettingsService: settingsService, Settings: settings, WixService : wixService});
     }));
@@ -58,11 +59,6 @@ describe('SettingsCtrl', function(){
     it('should store settings in scope', function() {
         scope.init();
         expect(scope.settings).toEqual(window.settings);
-    });
-
-    it('should call Wix init on load', function() {
-        scope.init();
-        expect(wixService.initialize).toHaveBeenCalled();
     });
 
     it('should set user as connected when user enters feed url', function() {

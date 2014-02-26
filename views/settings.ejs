@@ -1,75 +1,113 @@
 <!DOCTYPE html>
-<html ng-app="rss" ng-controller="SettingsCtrl" data-ng-init="init()">
+<html ng-controller="SettingsCtrl" data-ng-init="init()">
 <head>
     <title>Widget Settings &bull; Wix</title>
     <link type="text/css" href="/wix-ui-lib/ui-lib.min.css" rel="stylesheet">
     <link type="text/css" href="/dev/rss-app.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular-resource.min.js"></script>
-    <script src="/dev/rss-app.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js"></script>
+    <script src="/dist/rss-app.min.js"></script>
 </head>
+
 <body class="settings">
-<header class="box">
-    <div class="logo">
-        <img width="86" src="/wix-ui-lib/images/wix_icon.png" alt="logo"/>
-    </div>
-    <div class="loggedOut" ng-hide="settings.connected">
-        <p>This app lets you connect to any RSS feed you would like.</p>
-        <div class="login-panel">
-            <p class="create-account">Enter your your RSS URL</p><br>
-            <input type="text" ng-model="settings.feedUrl" id="rssFeedUrl" placeholder="http://rss.cnn.com/rss/edition.rss"/>
-            <button class="submit btn connect" ng-click="connect(true)">Connect Feed</button>
+    <div wix-scroll="{height:646}">
+
+        <!-- Header box -->
+        <header class="box">
+        <div class="logo">
+            <img width="86" src="/wix-ui-lib/images/wix_icon.png" alt="logo"/>
+        </div>
+
+        <div class="loggedOut" ng-hide="settings.connected">
+            <p>
+                This app lets you connect to any RSS feed you would like.
+            </p>
+
+            <div class="login-panel">
+                <p style="margin: 0">Enter your your RSS URL</p>
+                <div ng-feed-input ng-model="settings.feedUrl" wix-ctrl="Input" wix-model="feedUrl" wix-options="{placeholder: 'http://rss.cnn.com/rss/edition.rss', size: 'large'}"></div>
+                <button class="submit uilib-btn connect" ng-click="connect(true)">Connect feed</button>
+            </div>
+        </div>
+
+
+        <div class="loggedIn" ng-show="settings.connected">
+            <p>You are now connected to <a id="feedLink" ng-href="{{settings.feedUrl}}" target="_blank" ng-bind="feed.title"></a>.<br/>
+                <span class="feed-description" ng-bind="feed.description"></span><br/>
+                <a class="disconnect-account" ng-click="connect(false)">Disconnect feed</a>
+            </p>
+        </div>
+
+        </header>
+
+
+        <!-- Settings box -->
+        <div wix-ctrl="Accordion">
+
+        <div class="acc-pane">
+            <h3>Settings</h3>
+            <div class="acc-content">
+                <p>Please insert number of feed entries you would like to be displayed</p>
+                <ul class="list">
+                    <li>
+                        <div ng-num-of-entries ng-model="settings.numOfEntries" wix-ctrl="Spinner" wix-model="numOfEntries" wix-options="{ maxValue:500, value: 5, size: 'medium' }"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Color Pickers -->
+        <div class="acc-pane">
+            <h3>Color Settings: </h3>
+            <div class="acc-content">
+                <p>Set the widget colors</p>
+                <ul class="list">
+                    <li wix-label="Feed title text">
+                        <div wix-param="titleColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-3'}"></div>
+                    </li>
+                    <li wix-label="Feed entries text">
+                        <div wix-param="textColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-1'}"></div>
+                    </li>
+                    <li wix-label="Background">
+                        <div wix-param="bgColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor: 'color-3'}"></div>
+                    </li>
+                    <li wix-label="Feed background">
+                        <div wix-param="bgFeedColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor:'color-1'}"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Font Pickers -->
+        <div class="acc-pane">
+            <h3>Font Settings: </h3>
+            <div class="acc-content">
+                <p>Set the widget fonts</p>
+                <ul class="list">
+                    <li wix-label="Feed title font">
+                        <div wix-param="titleFont" wix-ctrl="FontStylePicker"></div>
+                    </li>
+                    <li wix-label="Feed entries font">
+                        <div wix-param="entriesFont" wix-ctrl="FontStylePicker"></div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="loggedIn" ng-show="settings.connected">
-        <p>You are now connected to <a id="feedLink" ng-href="{{settings.feedUrl}}" target="_blank" ng-bind="feed.title"></a>.<br/>
-            <span class="feed-description" ng-bind="feed.description"></span><br/>
-            <a class="disconnect-account" ng-click="connect(false)">Disconnect account</a></p>
-    </div>
-</header>
 
-<!-- Settings box -->
-<div wix-ctrl="Accordion">
-
-    <div class="acc-pane">
-        <h3>Settings</h3>
-        <div class="acc-content">
-            <p>Please insert number of feed entries you would like to be displayed</p>
-            <ul class="list">
-                <li>
-                    <input ng-model="settings.numOfEntries" class="input-number" type="number" min="1" max="100" step="1" />
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Color Pickers -->
-    <div class="acc-pane">
-        <h3>Color Settings: </h3>
-        <div class="acc-content">
-            <p>Set the  widget colors</p>
-            <ul class="list">
-                <li wix-label="Title text">
-                    <div wix-param="titleColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'color-3'}"></div>
-                </li>
-                <li wix-label="Text">
-                    <div wix-param="textColor" wix-ctrl="ColorPicker" wix-options="{startWithColor:'black/white'}"></div>
-                </li>
-                <li wix-label="Background">
-                    <div wix-param="bgColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor:'white/black'}"></div>
-                </li>
-                <li wix-label="Feed background">
-                    <div wix-param="bgFeedColor" wix-ctrl="ColorPickerWithOpacity" wix-options="{startWithColor:'white/black'}"></div>
-                </li>
-            </ul>
-        </div>
-    </div>
 </div>
-<script type="text/javascript" src="http://sslstatic.wix.com/services/js-sdk/1.24.0/js/Wix.js"></script>
-<script type="text/javascript" src="/wix-ui-lib/ui-lib.min.js"></script>
-<script type="text/javascript">
-    var settings = <%- settings %>;
-</script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://sslstatic.wix.com/services/js-sdk/1.27.0/js/Wix.js"></script>
+    <script src="/wix-ui-lib/ui-lib.min.js"></script>
+
+    <script type="text/javascript">
+        var settings = <%- settings %>;
+
+        $(function(){
+            Wix.UI.initialize({});
+            var $injector = angular.bootstrap(document, ['rss']);
+        });
+    </script>
 </body>
 </html>
