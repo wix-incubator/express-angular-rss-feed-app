@@ -6,7 +6,7 @@ A Wix App, RSS Feed, demonstrating how to build a production ready app. Client &
 
 ### Intro
 
-This app is built using the same structure and concept as the [RSS Feed on Google App Engine](https://github.com/wix/wix-gae-rss-feed-app) but uses Node.js as it's backend. The client side (html/js/css) was built using Angular.js and Karma from testing.
+This app is built using the same structure and concept as the [RSS Feed on Google App Engine](https://github.com/wix/wix-gae-rss-feed-app) but uses Node.js as it's backend. The client side (html/js/css) was built using Angular.js and Karma for testing.
 
 This project is set to work on your local machine using express.js server and a local MongoDB database.
 
