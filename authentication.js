@@ -1,11 +1,13 @@
 var url = require('url');
-var APP_SECRET = 'YOUR_APP_SECRET';
+var APP_SECRET = '274cac4b-5816-46a5-b9e6-c9c04c52c46e';
 var crypto = require("crypto");
 
 function Authentication() {
     this.authenticate = function(req, res, next) {
         var url_parts = url.parse(req.url, true);
         var query = url_parts.query;
+        console.log(APP_SECRET);
+
         if (query.instance || query.origCompId || query.compId) {
             verify = verifyInstance(query.instance, APP_SECRET);
             if (verify.valid) {
