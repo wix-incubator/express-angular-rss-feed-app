@@ -24,6 +24,6 @@
         "grunt-contrib-uglify": "~0.2.7",
         "grunt-contrib-watch": "~0.5.3",
         "konphyg": "~1.2.1",
-        "mongojs": "~0.10.0"
+        "mongojs": "~1.0.0"
     }
 }
